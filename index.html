@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WIFIOMAH.Net</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #001220, #000814);
+      color: #fff;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      padding: 25px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    header img {
+      width: 90px;
+      animation: neonPulse 2s infinite;
+    }
+
+    @keyframes neonPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px #00f5ff) drop-shadow(0 0 20px #00f5ff);
+      }
+      50% {
+        filter: drop-shadow(0 0 20px gold) drop-shadow(0 0 40px #ffd700);
+      }
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin: 0;
+      background: linear-gradient(120deg, #00f5ff 20%, gold 40%, #00f5ff 60%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shineText 4s linear infinite;
+      text-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+    }
+
+    @keyframes shineText {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* ===== PACKAGES ===== */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px 20px;
+    }
+
+    .package {
+      background: rgba(0, 20, 40, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 25px 18px;
+      box-shadow: 0 0 18px #00f5ff88;
+      border: 1px solid rgba(0,245,255,0.4);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlide 1s forwards;
+    }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .package:nth-child(1) { animation-delay: 0.2s; }
+    .package:nth-child(2) { animation-delay: 0.4s; }
+    .package:nth-child(3) { animation-delay: 0.6s; }
+    .package:nth-child(4) { animation-delay: 0.8s; }
+    .package:nth-child(5) { animation-delay: 1s; }
+
+    .package:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px gold, 0 0 45px #ffd700;
+      border: 1px solid gold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .package h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #00f5ff;
+      text-shadow: 0 0 10px #00f5ff;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: gold;
+      margin-bottom: 18px;
+      text-shadow: 0 0 10px gold, 0 0 20px #ffd700;
+    }
+
+    .package ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      text-align: left;
+    }
+
+    .package ul li {
+      margin: 6px 0;
+      color: #ddd;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .package ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: gold;
+      font-size: 0.85rem;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 12px 25px;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ffd700, #ffa500, #ffd700);
+      color: #000814;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 0 12px gold, 0 0 22px #ffd700;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-gold:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px gold, 0 0 35px #ffd700;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: #001220;
+      border-top: 2px solid #00f5ff;
+      box-shadow: 0 -4px 20px #00f5ff;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer .contact-info {
+      margin: 10px 0 15px;
+    }
+
+    footer .contact-info p {
+      margin: 6px 0;
+    }
+
+    footer a {
+      color: gold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffd700;
+      text-shadow: 0 0 8px gold, 0 0 15px #ffd700;
+    }
+
+    footer img {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    /* ===== FLOATING BUTTONS ===== */
+    .float-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .float-btn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .float-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .float-btn img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .whatsapp {
+      background: #25d366;
+    }
+
+    .phone {
+      background: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <img src="logo.png" alt="WIFIOMAH Logo">
+    <h1>WIFIOMAH.Net</h1>
+  </header>
+
+  <!-- ===== PACKAGES ===== -->
+  <section class="packages">
+    <div class="package">
+      <h2>Up to 10 Mbps</h2>
+      <div class="price">Rp 100.000 / bulan</div>
+      <ul>
+        <li>Unlimited kuota</li>
+        <li>Cocok untuk 3-5 Perangkat</li>
+        <li>Include Router</li>
+        <li>Gratis Service</li>
+      </ul>
+      <a class="btn-gold" href="https://wa.me/6285655687362?text=Halo%20saya%20ingin%20daftar%20Paket%2010%20Mbps" target="_blank">Pesan Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h2>Up to 20 Mbps</h2>
+      <div class="price">Rp 150.000 / bulan</div>
+      <ul>
+        <li>Unlimited kuota</li>
+        <li>Cocok untuk 5-8 Perangkat</li>
+        <li>Include Router</li>
+        <li>Gratis Service</li>
+      </ul>
+      <a class="btn-gold" href="https://wa.me/6285655687362?text=Halo%20saya%20ingin%20daftar%20Paket%2020%20Mbps" target="_blank">Pesan Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h2>Up to 50 Mbps</h2>
+      <div class="price">Rp 300.000 / bulan</div>
+      <ul>
+        <li>Unlimited kuota</li>
+        <li>Cocok untuk bisnis warkop</li>
+        <li>Include Router</li>
+        <li>Gratis Service</li>
+      </ul>
+      <a class="btn-gold" href="https://wa.me/6285655687362?text=Halo%20saya%20ingin%20daftar%20Paket%2050%20Mbps" target="_blank">Pesan Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h2>Up to 75 Mbps</h2>
+      <div class="price">Rp 400.000 / bulan</div>
+      <ul>
+        <li>Unlimited kuota</li>
+        <li>Cocok untuk Kantor kecil</li>
+        <li>Include Router</li>
+        <li>Gratis Service</li>
+      </ul>
+      <a class="btn-gold" href="https://wa.me/6285655687362?text=Halo%20saya%20ingin%20daftar%20Paket%2075%20Mbps" target="_blank">Pesan Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h2>Up to 100 Mbps</h2>
+      <div class="price">Rp 500.000 / bulan</div>
+      <ul>
+        <li>Unlimited kuota</li>
+        <li>Cocok untuk bisnis & streaming</li>
+        <li>Include Router</li>
+        <li>Gratis Service</li>
+      </ul>
+      <a class="btn-gold" href="https://wa.me/6285655687362?text=Halo%20saya%20ingin%20daftar%20Paket%20100%20Mbps" target="_blank">Pesan Sekarang</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+  <p>© 2025 WIFIOMAH.Net – Semua Hak Dilindungi</p>
+  <p>Hubungi Customer Service :</p>
+  <div class="footer-divider"></div>
+  <div class="contact-info">
+    <p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> 
+       <a href="https://wa.me/6285655687362" target="_blank">+62 856-5568-7362</a></p>
+    <p><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"> 
+       <a href="mailto:wifiomahh@gmail.com">wifiomahh@gmail.com</a></p>
+  </div> 
+</footer>
+
+  <!-- ===== FLOATING BUTTONS ===== -->
+  <div class="float-container">
+    <a href="https://wa.me/6285655687362?text=Halo%20saya%20butuh%20informasi%20internet" 
+       class="float-btn whatsapp" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="tel:+6285655687362" class="float-btn phone">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png" alt="Phone">
+    </a>
+  </div>
+
+</body>
+</html>
